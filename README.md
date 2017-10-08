@@ -10,6 +10,7 @@ A personal dashboard and a GraphQL experiment.
 
 - Dashboard
   - CSS
+  - Deploy
 - Showtimes
   - Mutation
   - Caching

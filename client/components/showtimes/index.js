@@ -4,25 +4,79 @@ import styled from 'styled-components';
 import Loader from 'components/loader';
 import Error from 'components/error';
 
-const Container = styled.div``;
+const Container = styled.div`
+  border: 1px solid #ff5722;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+`;
 
-const Header = styled.div``;
+const Header = styled.div`
+  font-family: 'Open Sans';
+  font-size: 18px;
+  color: white;
+  font-weight: 600;
+  background-color: #ff5722;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 20px;
+`;
 
-const Cinemas = styled.div``;
+const Cinemas = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+`;
 
 const Cinema = styled.div``;
 
-const Name = styled.div``;
+const Name = styled.div`
+  font-family: 'Open Sans';
+  font-size: 17px;
+  font-weight: 600;
+  color: #424242;
+  margin-bottom: 10px;
+`;
 
-const Movies = styled.div``;
+const Movies = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
 
-const Movie = styled.div``;
+const Movie = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-width: 0px;
+  border-left-width: 1px;
+  border-color: #424242;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+`;
 
-const Title = styled.div``;
+const Title = styled.div`
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 600;
+  color: #424242;
+`;
 
-const Times = styled.div``;
+const Times = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
 
-const Showtime = styled.div``;
+const Showtime = styled.div`
+  font-family: 'Open Sans';
+  font-size: 13px;
+  color: #424242;
+  margin-right: 10px;
+`;
 
 const Showtimes = ({ data: { loading, error, cinemas } }) => {
   if (loading) {
