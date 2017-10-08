@@ -116,7 +116,6 @@ const base = {
   },
 };
 
-module.exports = webpackMerge(
-  base,
-  process.env.NODE_ENV === 'production' ? production : development,
-);
+const config = process.env.NODE_ENV === 'production' ? production : development;
+
+module.exports = webpackMerge(base, config);

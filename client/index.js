@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloClient, ApolloProvider } from 'react-apollo';
-import Application from 'components/application';
+import Dashboard from 'components/dashboard';
 
 const client = new ApolloClient();
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <Application />
+    <Dashboard />
   </ApolloProvider>,
   document.getElementById('root'),
 );

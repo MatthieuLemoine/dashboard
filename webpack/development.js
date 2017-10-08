@@ -17,6 +17,12 @@ module.exports = {
       hash: false,
       version: false,
     },
+    proxy: {
+      '/graphql': {
+        target: 'http://localhost:3000/graphql',
+        secure: false,
+      },
+    },
   },
   plugins: [
     new webpack.DefinePlugin({
