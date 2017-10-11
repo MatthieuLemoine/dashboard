@@ -5,7 +5,7 @@ const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const schema = require('./schema');
 const { init } = require('./cinema');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3888;
 const app = express();
 init();
 

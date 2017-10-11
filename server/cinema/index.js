@@ -34,6 +34,7 @@ async function getShowtimes(cinema) {
       },
     },
   });
+  await page.close();
   return {
     name: cinema,
     ...data,
