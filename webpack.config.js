@@ -18,6 +18,11 @@ const base = {
         include: [path.join(__dirname, 'client')],
         use: ['cache-loader', 'babel-loader'],
       },
+      // CSS
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
       // Fonts
       {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,

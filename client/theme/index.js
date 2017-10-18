@@ -1,5 +1,6 @@
 import { injectGlobal } from 'styled-components';
 import fonts from 'theme/fonts';
+import 'font-awesome/css/font-awesome.min.css';
 
 injectGlobal`
   @font-face {

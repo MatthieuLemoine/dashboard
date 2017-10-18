@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Loader from 'components/loader';
 import Error from 'components/error';
+import Icon from 'components/icon';
+import Button from 'components/button';
 
 const Container = styled.div`
   border: 1px solid #ff5722;
@@ -11,18 +13,26 @@ const Container = styled.div`
   flex-direction: column;
   align-items: stretch;
   overflow: hidden;
+  min-width: 400px;
 `;
 
 const Header = styled.div`
+  display: flex;
+  background-color: #ff5722;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+`;
+
+const WidgetTitle = styled.div`
   font-family: 'Open Sans';
   font-size: 18px;
   color: white;
   font-weight: 600;
-  background-color: #ff5722;
-  height: 40px;
-  line-height: 40px;
-  padding-left: 20px;
 `;
+
+const Input = styled.input``;
 
 const Cinemas = styled.div`
   display: flex;
@@ -30,7 +40,16 @@ const Cinemas = styled.div`
   padding: 20px;
 `;
 
-const Cinema = styled.div``;
+const Cinema = styled.div`
+  margin: 20px;
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const Name = styled.div`
   font-family: 'Open Sans';
@@ -78,7 +97,9 @@ const Showtime = styled.div`
   margin-right: 10px;
 `;
 
-const Showtimes = ({ data: { loading, error, cinemas } }) => {
+const Showtimes = ({
+  data: { loading, error, cinemas }, onSubmit, onUpdate, name, remove,
+}) => {
   if (loading) {
     return <Loader />;
   }
@@ -87,11 +108,25 @@ const Showtimes = ({ data: { loading, error, cinemas } }) => {
   }
   return (
     <Container>
-      <Header>Showtimes</Header>
+      <Header>
+        <WidgetTitle>Showtimes</WidgetTitle>
+        <Input
+          type="text"
+          name="name"
+          value={name}
+          onChange={onUpdate('name')}
+          onKeyPress={e => e.key === 'Enter' && onSubmit()}
+        />
+      </Header>
       <Cinemas>
         {cinemas.map(cinema => (
-          <Cinema key={cinema.name}>
-            <Name>{cinema.name}</Name>
+          <Cinema key={cinema.id}>
+            <Row>
+              <Name>{cinema.name}</Name>
+              <Button onClick={() => remove(cinema.id)}>
+                <Icon name="trash" size={15} color="#C62828" />
+              </Button>
+            </Row>
             <Movies>
               {cinema.movies.map(movie => (
                 <Movie key={movie.title}>
@@ -111,6 +146,10 @@ const Showtimes = ({ data: { loading, error, cinemas } }) => {
   );
 };
 
+Showtimes.defaultProps = {
+  name: '',
+};
+
 Showtimes.propTypes = {
   data: PropTypes.shape({
     error: PropTypes.shape({
@@ -125,6 +164,10 @@ Showtimes.propTypes = {
       })).isRequired,
     })),
   }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
+  name: PropTypes.string,
 };
 
 export default Showtimes;

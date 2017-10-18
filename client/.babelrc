@@ -8,7 +8,8 @@
           "browsers": ["last 2 versions"]
         }
       }
-    ]
+    ],
+    "stage-3"
   ],
   "plugins": [
     [

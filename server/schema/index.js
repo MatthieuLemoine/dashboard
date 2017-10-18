@@ -1,8 +1,9 @@
-const { makeExecutableSchema } = require('graphql-tools');
-const { getCinemas } = require('../cinema');
+import { makeExecutableSchema } from 'graphql-tools';
+import { getCinemas, addCinema, removeCinema } from '../cinema';
 
 const typeDefs = `
   type Cinema {
+    id: String!
     name: String!
     movies: [Movie]!
   }
@@ -12,20 +13,33 @@ const typeDefs = `
   }
   # the schema allows the following query:
   type Query {
-    cinemas(names: [String]!): [Cinema]
+    cinemas: [Cinema]!
+  }
+  # this schema allows the following mutation:
+  type Mutation {
+    addCinema (
+      name: String!
+    ): Cinema
+    removeCinema (
+      id: String!
+    ): Boolean
   }
 `;
 
 const resolvers = {
   Query: {
-    cinemas: (_, { names }) => getCinemas(names),
+    cinemas: () => getCinemas(),
+  },
+  Mutation: {
+    addCinema: (_, { name }) => addCinema(name),
+    removeCinema: (_, { id }) => removeCinema(id),
   },
   Cinema: {
     movies: cinema => cinema.movies,
   },
 };
 
-module.exports = makeExecutableSchema({
+export default makeExecutableSchema({
   typeDefs,
   resolvers,
 });

@@ -39,7 +39,7 @@ const Dashboard = () => (
       <Title>Dashboard</Title>
     </Header>
     <Widgets>
-      <Showtimes names={['UGC Lille', 'Le Majestic Lille']} />
+      <Showtimes />
     </Widgets>
   </Container>
 );
