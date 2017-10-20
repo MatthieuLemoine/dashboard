@@ -9,7 +9,7 @@ const URL = 'https://www.google.fr/search?q=';
 let browser;
 
 export async function init() {
-  browser = await puppeteer.launch();
+  browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
 }
 
 export async function getCinemas() {
