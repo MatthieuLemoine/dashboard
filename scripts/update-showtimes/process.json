@@ -1,0 +1,10 @@
+{
+  "name": "update-showtimes",
+  "script": "scripts/update-showtimes/index.js",
+  "out_file": "scripts/update-showtimes/out.log",
+  "error_file": "scripts/update-showtimes/error.log",
+  "cron_restart": "10 0 * * *",
+  "watch": false,
+  "merge_logs": true,
+  "autorestart": false
+}

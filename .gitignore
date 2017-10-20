@@ -3,3 +3,4 @@ dist
 .cache-loader
 .esm-cache
 db.json
+*.log

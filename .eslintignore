@@ -2,3 +2,4 @@ node_modules
 dist
 .cache-loader
 db.json
+*.log
