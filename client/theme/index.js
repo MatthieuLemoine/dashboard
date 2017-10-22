@@ -29,3 +29,15 @@ injectGlobal`
     margin : 0;
   }
 `;
+
+export default {
+  colors: {
+    LIGHT_GREY: '#EEEEEE',
+    MEDIUM_GREY: '#BDBDBD',
+    GREY: '#757575',
+    DARK_GREY: '#424242',
+    RED: '#F44336',
+    INDIGO: '#3F51B5',
+    LIGHT_BLUE: '#03A9F4',
+  },
+};

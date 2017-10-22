@@ -1,5 +1,4 @@
 import scrapeIt from 'scrape-it';
-import puppeteer from 'puppeteer';
 import isToday from 'date-fns/is_today';
 import uuid from 'uuid/v4';
 import db from '../db';
@@ -8,8 +7,8 @@ const URL = 'https://www.google.fr/search?q=';
 
 let browser;
 
-export async function init() {
-  browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+export async function init(puppeteerBrowser) {
+  browser = puppeteerBrowser;
 }
 
 export async function getCinemas() {

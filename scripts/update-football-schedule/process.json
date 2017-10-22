@@ -1,0 +1,10 @@
+{
+  "name": "update-football-schedule",
+  "script": "scripts/update-football-schedule/index.js",
+  "out_file": "scripts/update-football-schedule/out.log",
+  "error_file": "scripts/update-football-schedule/error.log",
+  "cron_restart": "10 0 * * *",
+  "watch": false,
+  "merge_logs": true,
+  "autorestart": false
+}

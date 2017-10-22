@@ -29,3 +29,11 @@ npm start
 ```
 pm2 start scripts/update-showtimes/process.json
 ```
+
+### Footbal schedule
+
+- CRON :
+
+```
+pm2 start scripts/update-football-schedule/process.json
+```

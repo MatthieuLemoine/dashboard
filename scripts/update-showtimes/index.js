@@ -15,4 +15,6 @@ const query = `{
   }
 }`;
 
-request(URL, query).then(() => process.stdout.write('Showtimes updated\n'));
+request(URL, query)
+  .then(() => process.stdout.write('Showtimes updated\n'))
+  .catch(console.error);

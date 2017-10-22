@@ -1,43 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Loader from 'components/loader';
-import Error from 'components/error';
+import Widget from 'components/widget';
 import Icon from 'components/icon';
 import Button from 'components/button';
-
-const Container = styled.div`
-  border: 1px solid #ff5722;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  overflow: hidden;
-  min-width: 400px;
-`;
-
-const Header = styled.div`
-  display: flex;
-  background-color: #ff5722;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-`;
-
-const WidgetTitle = styled.div`
-  font-family: 'Open Sans';
-  font-size: 18px;
-  color: white;
-  font-weight: 600;
-`;
 
 const Input = styled.input``;
 
 const Cinemas = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 20px;
 `;
 
 const Cinema = styled.div`
@@ -99,25 +71,22 @@ const Showtime = styled.div`
 
 const Showtimes = ({
   data: { loading, error, cinemas }, onSubmit, onUpdate, name, remove,
-}) => {
-  if (loading) {
-    return <Loader />;
-  }
-  if (error) {
-    return <Error error={error} />;
-  }
-  return (
-    <Container>
-      <Header>
-        <WidgetTitle>Showtimes</WidgetTitle>
-        <Input
-          type="text"
-          name="name"
-          value={name}
-          onChange={onUpdate('name')}
-          onKeyPress={e => e.key === 'Enter' && onSubmit()}
-        />
-      </Header>
+}) => (
+  <Widget
+    loading={loading}
+    error={error}
+    title="Showtimes"
+    renderAction={() => (
+      <Input
+        type="text"
+        name="name"
+        value={name}
+        onChange={onUpdate('name')}
+        onKeyPress={e => e.key === 'Enter' && onSubmit()}
+      />
+    )}
+  >
+    {() => (
       <Cinemas>
         {cinemas.map(cinema => (
           <Cinema key={cinema.id}>
@@ -142,9 +111,9 @@ const Showtimes = ({
           </Cinema>
         ))}
       </Cinemas>
-    </Container>
-  );
-};
+    )}
+  </Widget>
+);
 
 Showtimes.defaultProps = {
   name: '',
