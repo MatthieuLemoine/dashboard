@@ -32,6 +32,7 @@ const Widgets = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: flex-start;
 `;
 
 const Dashboard = () => (
