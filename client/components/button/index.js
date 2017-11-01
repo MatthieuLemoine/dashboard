@@ -8,8 +8,8 @@ const Container = styled.div`
   }
 `;
 
-const Button = ({ onClick, children }) => (
-  <Container onClick={onClick} role="button">
+const Button = ({ onClick, children, ...props }) => (
+  <Container onClick={onClick} role="button" {...props}>
     {children}
   </Container>
 );

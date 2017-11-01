@@ -39,5 +39,7 @@ export default {
     RED: '#F44336',
     INDIGO: '#3F51B5',
     LIGHT_BLUE: '#03A9F4',
+    GITHUB: '#282D31',
+    GREEN: '#4CAF50',
   },
 };

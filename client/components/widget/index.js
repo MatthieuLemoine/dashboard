@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Loader from 'components/loader';
 import Error from 'components/error';
+import Icon from 'components/icon';
 import theme from 'theme';
 
 const Container = styled.div`
@@ -25,11 +26,18 @@ const Header = styled.div`
   padding: 10px 20px;
 `;
 
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
 const WidgetTitle = styled.div`
   font-family: 'Open Sans';
   font-size: 18px;
   color: white;
   font-weight: 600;
+  margin-left: 10px;
 `;
 
 const WidgetContainer = styled.div`
@@ -37,7 +45,7 @@ const WidgetContainer = styled.div`
 `;
 
 const Widget = ({
-  loading, error, title, children, renderAction, color,
+  loading, error, title, children, renderAction, color, icon,
 }) => {
   if (loading) {
     return <Loader />;
@@ -48,7 +56,10 @@ const Widget = ({
   return (
     <Container color={color}>
       <Header color={color}>
-        <WidgetTitle>{title}</WidgetTitle>
+        <TitleContainer>
+          {icon ? <Icon {...icon} /> : null}
+          <WidgetTitle>{title}</WidgetTitle>
+        </TitleContainer>
         {renderAction ? renderAction() : null}
       </Header>
       <WidgetContainer>{children()}</WidgetContainer>
@@ -69,6 +80,11 @@ Widget.propTypes = {
   color: PropTypes.string,
   renderAction: PropTypes.func,
   children: PropTypes.func.isRequired,
+  icon: PropTypes.shape({
+    color: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    size: PropTypes.number.isRequired,
+  }),
 };
 
 export default Widget;

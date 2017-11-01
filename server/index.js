@@ -6,6 +6,7 @@ import schema from './schema';
 import getBrowser from './browser';
 import { init as initCinema } from './cinema';
 import { init as initFootball } from './football';
+import logger from './logger';
 
 const PORT = process.env.PORT || 3888;
 const app = express();
@@ -20,12 +21,12 @@ if (process.env.NODE_ENV !== 'production') {
 try {
   setup();
 } catch (e) {
-  console.error(e);
+  logger.error(e);
 }
 
 async function setup() {
   const browser = await getBrowser();
   initCinema(browser);
   initFootball(browser);
-  app.listen(PORT, () => process.stdout.write(`Server started on port ${PORT}`));
+  app.listen(PORT, () => logger.info(`Server started on port ${PORT}`));
 }

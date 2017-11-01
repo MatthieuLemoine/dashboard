@@ -3,3 +3,4 @@ dist
 .cache-loader
 db.json
 *.log
+access.token

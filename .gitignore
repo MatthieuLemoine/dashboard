@@ -4,3 +4,4 @@ dist
 .esm-cache
 db.json
 *.log
+access.token

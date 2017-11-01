@@ -40,7 +40,7 @@ const Time = styled.div`
   color: ${theme.colors.GREY};
 `;
 
-const Team = styled.div`
+const Team = styled(({ end, ...props }) => <div {...props} />)`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -63,7 +63,17 @@ const Result = styled.div`
 `;
 
 const Football = ({ data: { loading, error, schedule } }) => (
-  <Widget loading={loading} error={error} title="Football" color={theme.colors.LIGHT_BLUE}>
+  <Widget
+    loading={loading}
+    error={error}
+    title="Football"
+    color={theme.colors.LIGHT_BLUE}
+    icon={{
+      name: 'futbol-o',
+      size: 24,
+      color: '#ffffff',
+    }}
+  >
     {() => (
       <Schedule>
         {schedule.matchs.map((match, index) => (

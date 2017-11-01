@@ -1,6 +1,7 @@
 import { makeExecutableSchema } from 'graphql-tools';
 import { getCinemas, addCinema, removeCinema } from '../cinema';
 import { getScheduleAndResults } from '../football';
+import { getRepositories, addRepository, removeRepository } from '../github';
 
 const typeDefs = `
   type Cinema {
@@ -25,10 +26,39 @@ const typeDefs = `
     name: String!
     picture: String!
   }
+  type Repository {
+    id: String!
+    nameWithOwner: String!
+    description: String!
+    url: String!
+    primaryLanguage: Language
+    issues: Int!
+    stargazers: Int!
+    lastRelease: Release
+  }
+  type Language {
+    id: String!
+    name: String!
+    color: String!
+  }
+  type Release {
+    id: String!
+    name: String!
+    description: String!
+    createdAt: String!
+    url: String!
+    author: User!
+  }
+  type User {
+    id: String!
+    name: String!
+    login: String!
+  }
   # the schema allows the following query:
   type Query {
     cinemas: [Cinema]!
     schedule: Schedule!
+    repositories: [Repository]!
   }
   # this schema allows the following mutation:
   type Mutation {
@@ -38,6 +68,13 @@ const typeDefs = `
     removeCinema (
       id: String!
     ): Boolean
+    addRepository (
+      owner: String!
+      name: String!
+    ): Repository
+    removeRepository (
+      id: String!
+    ): Boolean
   }
 `;
 
@@ -45,10 +82,13 @@ const resolvers = {
   Query: {
     cinemas: () => getCinemas(),
     schedule: () => getScheduleAndResults(),
+    repositories: () => getRepositories(),
   },
   Mutation: {
     addCinema: (_, { name }) => addCinema(name),
     removeCinema: (_, { id }) => removeCinema(id),
+    addRepository: (_, { owner, name }) => addRepository(owner, name),
+    removeRepository: (_, { id }) => removeRepository(id),
   },
   Cinema: {
     movies: cinema => cinema.movies,

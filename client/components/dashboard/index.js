@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Showtimes from 'containers/showtimes';
 import Football from 'containers/football';
+import Repositories from 'containers/repositories';
 
 const Container = styled.div`
   display: flex;
@@ -41,6 +42,7 @@ const Dashboard = () => (
     <Widgets>
       <Showtimes />
       <Football />
+      <Repositories />
     </Widgets>
   </Container>
 );

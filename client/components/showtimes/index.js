@@ -76,6 +76,11 @@ const Showtimes = ({
     loading={loading}
     error={error}
     title="Showtimes"
+    icon={{
+      name: 'ticket',
+      size: 24,
+      color: '#ffffff',
+    }}
     renderAction={() => (
       <Input
         type="text"

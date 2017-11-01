@@ -8,6 +8,9 @@ const adapter = new FileSync(path.join(__dirname, 'db.json'), {
       lastFetch: null,
       cinemas: [],
     },
+    github: {
+      repositories: [],
+    },
   },
 });
 
