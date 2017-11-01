@@ -37,3 +37,7 @@ pm2 start scripts/update-showtimes/process.json
 ```
 pm2 start scripts/update-football-schedule/process.json
 ```
+
+### Repositories widget
+
+Follow the latest release of your favorite projects.
