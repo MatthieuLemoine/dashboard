@@ -10,7 +10,7 @@ const token = fs
   })
   .replace('\n', '');
 const endpoint = 'https://api.github.com/graphql';
-console.log(`Bearer ${token}`);
+
 const client = new GraphQLClient(endpoint, {
   headers: {
     Authorization: `Bearer ${token}`,
@@ -69,7 +69,6 @@ export async function getRepositories() {
 export async function getRepository(owner, name) {
   const response = await client.request(repositoryQuery, { owner, name });
   const { repository } = response;
-  console.log(repository);
   return {
     ...repository,
     issues: repository.issues.totalCount,
