@@ -21,6 +21,10 @@ const repositoryQuery = `query getRepository($name: String!, $owner: String!) {
   repository(name: $name, owner: $owner) {
     id
     nameWithOwner
+    owner {
+      login
+    }
+    name
     description
     url
     primaryLanguage {
@@ -71,6 +75,7 @@ export async function getRepository(owner, name) {
   const { repository } = response;
   return {
     ...repository,
+    owner: repository.owner.login,
     issues: repository.issues.totalCount,
     stargazers: repository.stargazers.totalCount,
     lastRelease: repository.releases.edges

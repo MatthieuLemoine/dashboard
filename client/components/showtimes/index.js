@@ -10,6 +10,7 @@ const Input = styled.input``;
 const Cinemas = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 const Cinema = styled.div`
